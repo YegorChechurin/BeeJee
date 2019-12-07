@@ -16,14 +16,14 @@ class TaskRepository
 		$this->DB = $database;
 	}
 
-	public function storeTask(Task $task): void
+	public function storeTask(array $task): void
 	{
 		$fields = ['username', 'email', 'text'];
 
 		$values = [
-			$task->getUsername(),
-			$task->getEmail(),
-			$task->getText(),
+			$task['username'],
+			$task['email'],
+			$task['text'],
 		];
 
 		$this->DB->insert(self::TABLE, $fields, $values);
