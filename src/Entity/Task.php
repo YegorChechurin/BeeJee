@@ -12,6 +12,8 @@ class Task
 
 	private $text;
 
+	private $status;
+
 	public function getId(): int
 	{
 		return $this->id;
@@ -45,5 +47,15 @@ class Task
 	public function setText(string $text)
 	{
 		$this->text = $text;
+	}
+
+	public function function getStatus(): ?string
+	{
+		return $this->status;
+	}
+
+	public function setStatus(string $status)
+	{
+		$this->status = $status;
 	}
 }
