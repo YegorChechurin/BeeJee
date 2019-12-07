@@ -22,7 +22,7 @@ class Router
 			$urlMatch = preg_match('%/tasks'.$r['url'].'%', $this->request->getPathInfo());
 
 			$methodMatch = ($this->request->getMethod() == $r['method']) 
-			    || 'any == '($r['method']);
+			    || 'any' == ($r['method']);
 
 			if ($urlMatch && $methodMatch) {
 				$controllerLiteral = '\\App\\Controller\\'.$r['controller'].'Controller';
