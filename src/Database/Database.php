@@ -5,7 +5,7 @@ namespace App\Database;
 // https://github.com/YegorChechurin/Social-Nano-Network/blob/database/skeleton/Database/Database.php
 class Database
 {
-	private const DSN = 'mysql:dbname=snn;host=localhost';
+	private const DSN = 'mysql:dbname=beejee;host=localhost';
 
     private const USER = 'root';
 
