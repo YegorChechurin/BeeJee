@@ -6,6 +6,8 @@
     },
 	"require": {
 		"symfony/http-foundation": "^4.4",
-		"twig/twig": "^2.0"
+		"twig/twig": "^2.0",
+		"symfony/form": "^4.4",
+		"symfony/twig-bridge": "^4.4"
 	}
 }
