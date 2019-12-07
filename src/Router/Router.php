@@ -21,7 +21,7 @@ class Router
 		foreach ($this->routes as $r) {
 			$urlMatch = preg_match('%/tasks'.$r['url'].'%', $this->request->getPathInfo());
 
-			$methodMatch = ($this->request->getMethod() == $r['method']) 
+			$methodMatch = (in_array($this->request->getMethod(), $r['methods'])) 
 			    || 'any' == ($r['method']);
 
 			if ($urlMatch && $methodMatch) {

@@ -8,7 +8,7 @@ use App\Router\Router;
 $routes = [
 	[
 		'url' => '/home',
-		'method' => 'GET',
+		'methods' => ['GET', 'POST'],
 		'controller' => 'Home',
 		'template' => 'home.html.twig',
 	],
