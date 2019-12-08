@@ -55,6 +55,8 @@ class Database
      * prepared statement. 
      *
      * @param string $table - Name of database table data is selected from.
+     * @param string $className - Nmae of class selected data is associated
+     * with.
      * @param string $clause_exp - WHERE clause in a form of prepared 
      * statement. It does NOT contain the WHERE keyword. Example:
      * $clause_exp = 'field=:parameter';
@@ -97,6 +99,36 @@ class Database
         }
 
         return $result;
+    }
+
+    public function selectWithLimit(string $table, string $className, int $offset, int $numOfRecords): array
+    {
+    	$format = "SELECT * FROM %s LIMIT :offset, :numOfRecords";
+
+        $query = sprintf($format, $table);
+        $prep = $this->conn->prepare($query);
+
+        $prep->bindValue(':offset', $offset, \PDO::PARAM_INT);
+        $prep->bindValue(':numOfRecords', $numOfRecords, \PDO::PARAM_INT);
+
+        $prep->execute();
+
+        $result = [];
+        while ($obj = $prep->fetchObject($className)) {
+        	$result[] = $obj;
+        }
+
+        return $result;
+    }
+
+    public function selectTotalAmountOfRecords(string $table): int
+    {
+    	$format = "SELECT COUNT(*) FROM %s";
+    	$query = sprintf($format, $table);
+
+    	$result = $this->conn->query($query)->fetch(\PDO::FETCH_ASSOC);
+
+    	return (int)$result['COUNT(*)'];
     }
     
     /**
