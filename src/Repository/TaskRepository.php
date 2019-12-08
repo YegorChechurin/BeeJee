@@ -30,8 +30,13 @@ class TaskRepository
 		$this->DB->insert(self::TABLE, $fields, $values);
 	}
 
-	public function fetchAllTasks(): array
+	public function getTotalAmountOfTasks(): int
 	{
-		return $this->DB->select(self::TABLE, Task::class);
+		return $this->DB->selectTotalAmountOfRecords(self::TABLE);
+	}
+
+	public function fetchTasksByLimit(int $offset, int $numOfTasks): array
+	{
+		return $this->DB->selectWithLimit(self::TABLE, Task::class, $offset, $numOfTasks);
 	}
 }
