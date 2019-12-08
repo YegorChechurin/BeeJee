@@ -9,8 +9,9 @@
 {% block body %}
 	<div class="row">
 		<div class="col-sm-6">
-			<div id="task_list">
+			<div id="task_list" class="list">
 				<h2 align="center">Tasks</h2>
+
 				{% for t in tasks %}
 					<div class="task">
 						<div class="username">
@@ -27,8 +28,24 @@
 						</div>
 					</div>
 				{% endfor %}
+
+				{% if right_limit > 1 %}
+					<nav id="paginator">
+						<ul class="pagination">
+							{% for i in left_limit..right_limit %}
+								{% if i == page_number %}
+									{% set class = 'page-item active' %}
+								{% else %}
+									{% set class = 'page-item' %}
+								{% endif %}
+								<li class="{{ class }}"><a class="page-link" href="{{ url }}?page={{ i }}">{{ i }}</a></li>
+							{% endfor %}
+						</ul>
+					</nav>
+				{% endif %}
 			</div>
 		</div>
+
 		<div class="col-sm-6">
 			<div id="task_creation_form">
 				<h2 align="center">Create new task</h2>
