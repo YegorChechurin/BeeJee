@@ -39,7 +39,7 @@ class Task
 		$this->email = $email;
 	}
 
-	public function function getText(): string
+	public function getText(): string
 	{
 		return $this->text;
 	}
@@ -49,7 +49,7 @@ class Task
 		$this->text = $text;
 	}
 
-	public function function getStatus(): ?string
+	public function getStatus(): ?string
 	{
 		return $this->status;
 	}
