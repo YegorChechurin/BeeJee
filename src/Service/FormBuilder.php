@@ -4,6 +4,7 @@ namespace App\Service;
 
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Email;
@@ -22,7 +23,7 @@ class FormBuilder
 		           	   	   new Email(),
 		           	   ]
 		           ])
-		           ->add('text', TextType::class, [
+		           ->add('text', TextareaType::class, [
 		           	   'constraints' => new NotBlank(),
 		           ])
 		           ->add('save', SubmitType::class, ['label' => 'Create Task'])
